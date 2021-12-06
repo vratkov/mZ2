@@ -10,7 +10,7 @@ public class averagePriceHandler extends DefaultHandler {
 
     boolean isElement;
     int count = 0;
-    float sum = 0;
+    double sum = 0;
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
@@ -30,8 +30,8 @@ public class averagePriceHandler extends DefaultHandler {
     public void characters(char[] ch, int start, int length) throws SAXException {
         if (isElement) {
             String price = new String(ch, start,length);
-            if(length>1) {
-                float fPrice = Float.parseFloat(price);
+            if(length>0) {
+                double fPrice = Double.parseDouble(price);
                 sum = sum + fPrice;
                 count ++;
             }
